@@ -34,7 +34,7 @@ glow_hdr_threshold = 1.61
 modulate = Color(1, 1, 1, 0.501961)
 material = SubResource("CanvasItemMaterial_4dmx1")
 script = ExtResource("1")
-bullet_image = 2
+bullet_image = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1024.0

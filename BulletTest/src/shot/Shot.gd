@@ -41,7 +41,7 @@ func _ready() -> void:
 			Common.eBulletImage.OUTLINE: # アウトライン.
 				mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
 				_spr.texture = load("res://assets/images/shot4.png")
-			Common.eBulletImage.LUMINESCENCE: # 発光.
+			Common.eBulletImage.LUMINESCENCE, Common.eBulletImage.LUMINESCENCE2: # 発光.
 				pass
 			Common.eBulletImage.TRAIL: # トレイル.
 				pass

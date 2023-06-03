@@ -71,7 +71,11 @@ func _ready() -> void:
 			_spr.texture = load("res://assets/images/bullet3.png")
 		Common.eBulletImage.LUMINESCENCE: # 発光.
 			_luminesscence.visible = true
+		Common.eBulletImage.LUMINESCENCE2: # 発光2.
+			# ビビットな色合いに変更.
+			_spr.texture = load("res://assets/images/bullet5.png")
 		Common.eBulletImage.TRAIL: # トレイル.
+			_spr.texture = load("res://assets/images/bullet5.png")
 			_line.visible = true
 
 ## 更新

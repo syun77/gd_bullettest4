@@ -29,6 +29,7 @@ func _ready() -> void:
 		"bullet" : _bullet_layer,
 		"particle": _particle_layer,
 	}
+	
 	Common.setup(layers, _player)
 	
 	for key in Enemy.eType.keys():

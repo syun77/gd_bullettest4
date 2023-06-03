@@ -5,6 +5,7 @@ enum eBulletImage {
 	DEFAULT, # デフォルト.
 	OUTLINE, # アウトラインをつける.
 	LUMINESCENCE, # 発光.
+	LUMINESCENCE2, # 発光2.
 	TRAIL, # トレイル.
 }
 
