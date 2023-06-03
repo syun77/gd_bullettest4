@@ -1,5 +1,13 @@
 extends Node
 
+## 弾画像の種別.
+enum eBulletImage {
+	DEFAULT, # デフォルト.
+	OUTLINE, # アウトラインをつける.
+	LUMINESCENCE, # 発光.
+	TRAIL, # トレイル.
+}
+
 const PARTICLE_OBJ = preload("res://src/particle/Particle.tscn")
 const PARTICLE_RING_OBJ = preload("res://src/particle/ParticleRing.tscn")
 const TAKO_OBJ = preload("res://src/enemy/Tako.tscn")
@@ -17,6 +25,12 @@ const CENTER_Y = SCREEN_H / 2
 var _layers = null
 var _player:Player = null
 var _prev_target_pos = Vector2.ZERO
+var _bullet_image = eBulletImage.DEFAULT
+
+func get_bullet_image() -> eBulletImage:
+	return _bullet_image;
+func set_bullet_image(v:eBulletImage) -> void:
+	_bullet_image = v
 
 func setup(layers, player) -> void:
 	_layers = layers

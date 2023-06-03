@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var bullet_image = Common.eBulletImage.DEFAULT
 
 @onready var _camera = $MainCamera
 
@@ -36,7 +37,11 @@ func _ready() -> void:
 	_optionbtn_enemy.select(_enemy.type)
 
 func _process(delta: float) -> void:
+	_update_bullet_image()
 	_update_ui()
+
+func _update_bullet_image() -> void:
+	Common.set_bullet_image(bullet_image)
 
 func _update_ui() -> void:
 	Common.is_destroy = _checkbox_destroy.button_pressed

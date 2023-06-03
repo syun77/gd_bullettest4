@@ -59,6 +59,19 @@ func set_accel(ax:float, ay:float) -> void:
 	_accel.x = ax
 	_accel.y = ay
 
+## 準備.
+func _ready() -> void:
+	# 差し替えテスト.
+	match Common.get_bullet_image():
+		Common.eBulletImage.DEFAULT: # デフォルト.
+			_spr.texture = load("res://assets/images/bullet4.png")
+		Common.eBulletImage.OUTLINE: # アウトライン.
+			_spr.texture = load("res://assets/images/bullet3.png")
+		Common.eBulletImage.LUMINESCENCE: # 発光.
+			pass
+		Common.eBulletImage.TRAIL: # トレイル.
+			pass
+
 ## 更新
 func _physics_process(delta: float) -> void:
 	_velocity += _accel

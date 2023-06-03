@@ -32,6 +32,19 @@ func _ready() -> void:
 	for i in range(8):
 		var rate = 1.0 - ((i+1) / 8.0)
 		var spr:Sprite2D = get_node("./Sprite%d"%i)
+		# 差し替えテスト.
+		var mat:CanvasItemMaterial = _spr.material
+		match Common.get_bullet_image():
+			Common.eBulletImage.DEFAULT: # デフォルト.
+				mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+				_spr.texture = load("res://assets/images/shot5.png")
+			Common.eBulletImage.OUTLINE: # アウトライン.
+				mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+				_spr.texture = load("res://assets/images/shot4.png")
+			Common.eBulletImage.LUMINESCENCE: # 発光.
+				pass
+			Common.eBulletImage.TRAIL: # トレイル.
+				pass
 		spr.texture = _spr.texture
 		spr.scale.x = rate
 		spr.scale.y = rate
