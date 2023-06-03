@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://byn4trmkvd88h"]
+
+[ext_resource type="Texture2D" uid="uid://utsug1qjhk6b" path="res://assets/images/absorb.png" id="1_rsimq"]
+[ext_resource type="Script" path="res://src/particle/Absorb.gd" id="1_u6ujq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmf73"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xnjc"]
+radius = 8.0
+
+[node name="Absorb" type="Area2D"]
+script = ExtResource("1_u6ujq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
+material = SubResource("CanvasItemMaterial_nmf73")
+texture = ExtResource("1_rsimq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6xnjc")

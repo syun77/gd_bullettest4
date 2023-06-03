@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj2k0w8dmryx6"]
+
+[ext_resource type="Script" path="res://src/shot/Shot2.gd" id="1_ef5bo"]
+
+[sub_resource type="CanvasItemMaterial" id="3"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 16.0
+
+[node name="Shot2" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ef5bo")
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("3")
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width_curve = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("2")
+
+[connection signal="area_entered" from="." to="." method="_on_Shot2_area_entered"]

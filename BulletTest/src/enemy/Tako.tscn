@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxdu4peilotvd"]
+
+[ext_resource type="Script" path="res://src/enemy/Tako.gd" id="1_ck1rh"]
+[ext_resource type="Texture2D" uid="uid://vhev0ho7jvxo" path="res://assets/images/enemy.png" id="1_qbp6y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fo3nr"]
+radius = 56.0
+
+[node name="Tako" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("1_ck1rh")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qbp6y")
+hframes = 8
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fo3nr")

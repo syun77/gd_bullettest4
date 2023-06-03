@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqbpju5y8u6p2"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c4yc62525550" path="res://src/Player.tscn" id="2"]
+[ext_resource type="Shader" path="res://assets/shader/uv_scroll.gdshader" id="2_2pdhv"]
+[ext_resource type="Texture2D" uid="uid://c00ex15hxlaf3" path="res://assets/images/bg_back.png" id="2_dvhl6"]
+[ext_resource type="Texture2D" uid="uid://5qrlsfujxd2s" path="res://assets/images/bg_sky.png" id="3_n2fpg"]
+[ext_resource type="PackedScene" uid="uid://dgal4fl506wwy" path="res://src/enemy/Enemy.tscn" id="4"]
+[ext_resource type="Theme" uid="uid://cnbovrq5bcj74" path="res://assets/fonts/new_theme.tres" id="7_xiel3"]
+
+[sub_resource type="ShaderMaterial" id="2"]
+shader = ExtResource("2_2pdhv")
+shader_parameter/scroll_speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="4"]
+shader = ExtResource("2_2pdhv")
+shader_parameter/scroll_speed = 0.05
+
+[sub_resource type="Environment" id="Environment_w5alp"]
+background_mode = 3
+background_energy_multiplier = 0.0
+background_canvas_max_layer = 5
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.02
+glow_bloom = 0.2
+glow_blend_mode = 0
+glow_hdr_threshold = 1.61
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1024.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 1)
+
+[node name="BgLayer" type="CanvasLayer" parent="."]
+layer = 0
+scale = Vector2(1.28, 1.28)
+transform = Transform2D(1.28, 0, 0, 1.28, 0, 0)
+
+[node name="BgBack" type="Sprite2D" parent="BgLayer"]
+texture_repeat = 2
+material = SubResource("2")
+texture = ExtResource("2_dvhl6")
+centered = false
+
+[node name="BgSky" type="Sprite2D" parent="BgLayer"]
+texture_repeat = 2
+material = SubResource("4")
+texture = ExtResource("3_n2fpg")
+centered = false
+
+[node name="MainLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Player" parent="MainLayer" instance=ExtResource("2")]
+position = Vector2(512, 512)
+
+[node name="Enemy" parent="MainLayer" instance=ExtResource("4")]
+position = Vector2(512, 128)
+type = 11
+
+[node name="ShotLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="BulletLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="ParticleLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w5alp")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="CheckBoxDestroy" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 76.0
+offset_bottom = 39.0
+text = "敵弾破壊"
+
+[node name="CheckBoxAbsorb" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 76.0
+offset_bottom = 71.0
+text = "吸収"
+
+[node name="CheckBoxReflect" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 76.0
+offset_bottom = 103.0
+text = "跳ね返し"
+
+[node name="CheckBoxBuzz" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 92.0
+offset_bottom = 135.0
+text = "かすり"
+
+[node name="CheckBoxPush" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 92.0
+offset_bottom = 167.0
+text = "押し返し"
+
+[node name="CheckBoxGuard" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 108.0
+offset_bottom = 199.0
+text = "ガード
+"
+
+[node name="CheckBoxDummy" type="CheckBox" parent="UILayer"]
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 108.0
+offset_bottom = 231.0
+text = "[ダミー]"
+
+[node name="Copyright" type="Label" parent="UILayer"]
+offset_left = 792.0
+offset_top = 568.0
+offset_right = 1016.0
+offset_bottom = 591.0
+theme = ExtResource("7_xiel3")
+theme_override_colors/font_color = Color(0.756863, 0.756863, 0.756863, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "自機素材：有限会社エムツー様"
+
+[node name="OptionButtonEnemy" type="OptionButton" parent="UILayer"]
+offset_left = 8.0
+offset_top = 248.0
+offset_right = 112.0
+offset_bottom = 268.0
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(512, 300)

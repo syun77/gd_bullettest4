@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4yc62525550"]
+
+[ext_resource type="Script" path="res://src/Player.gd" id="1_cj14x"]
+[ext_resource type="Texture2D" uid="uid://cqb5bm6r51a1s" path="res://assets/images/barrier2.png" id="2_itc5y"]
+[ext_resource type="Texture2D" uid="uid://duix0v2h72ihf" path="res://assets/images/fighter_a.png" id="2_y03y7"]
+[ext_resource type="PackedScene" uid="uid://b8fc6buf8mw7g" path="res://src/Option.tscn" id="4_2sq3a"]
+[ext_resource type="Texture2D" uid="uid://dq2wtk7yitm20" path="res://assets/images/force.png" id="5_wem7j"]
+[ext_resource type="Texture2D" uid="uid://bn4bl04eiddmn" path="res://assets/images/force2.png" id="6_6c0hr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iph73"]
+radius = 12.0416
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_etttn"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xc6rq"]
+radius = 50.01
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_73fmw"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h30q3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbhc1"]
+bg_color = Color(0, 0.772549, 0, 1)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_cj14x")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_y03y7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iph73")
+
+[node name="Barrier" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Barrier"]
+modulate = Color(0, 0.552941, 1, 0.529412)
+material = SubResource("CanvasItemMaterial_etttn")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_itc5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
+shape = SubResource("CircleShape2D_xc6rq")
+
+[node name="Option" type="Node2D" parent="."]
+
+[node name="Option" parent="Option" instance=ExtResource("4_2sq3a")]
+position = Vector2(48, 0)
+
+[node name="Option2" parent="Option" instance=ExtResource("4_2sq3a")]
+position = Vector2(-48, 0)
+
+[node name="Force" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.623529)
+material = SubResource("CanvasItemMaterial_73fmw")
+
+[node name="Circle" type="Sprite2D" parent="Force"]
+modulate = Color(0, 0.729412, 0, 0.627451)
+z_index = -1
+texture = ExtResource("5_wem7j")
+
+[node name="Fill" type="Sprite2D" parent="Force"]
+visible = false
+modulate = Color(0.454902, 1, 0, 1)
+texture = ExtResource("6_6c0hr")
+
+[node name="ProgressBar" type="ProgressBar" parent="Force"]
+offset_left = -48.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_h30q3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vbhc1")
+max_value = 1.0
+value = 0.8
+show_percentage = false
+
+[connection signal="area_entered" from="Barrier" to="." method="_on_barrier_area_entered"]
