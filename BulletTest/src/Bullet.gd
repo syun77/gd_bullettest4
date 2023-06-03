@@ -8,6 +8,8 @@ const BUZZ_OBJ = preload("res://src/particle/BuzzEffect.tscn")
 const BUZZ_SIZE = 40.0
 
 @onready var _spr = $Sprite
+@onready var _luminesscence = $Luminescence
+@onready var _line = $Line2D
 
 var _velocity = Vector2.ZERO # 速度.
 var _accel = Vector2.ZERO # 加速度.
@@ -68,9 +70,9 @@ func _ready() -> void:
 		Common.eBulletImage.OUTLINE: # アウトライン.
 			_spr.texture = load("res://assets/images/bullet3.png")
 		Common.eBulletImage.LUMINESCENCE: # 発光.
-			pass
+			_luminesscence.visible = true
 		Common.eBulletImage.TRAIL: # トレイル.
-			pass
+			_line.visible = true
 
 ## 更新
 func _physics_process(delta: float) -> void:
@@ -100,7 +102,25 @@ func _physics_process(delta: float) -> void:
 		_spr.modulate = Color.RED
 	is_buzz = false
 	
+	
+	# line2Dの更新.
+	var d = _velocity * delta
+	# positionに追従してしまうので逆オフセットが必要となる.
+	for i in range(_line.points.size()):
+		_line.points[i] -= d # すべてのLine2Dの位置を移動量で逆オフセットする.
+	_line.points[0] = Vector2.ZERO # 先頭は0でよい.
+	_update_line2d()
+	
+	# _draw() を呼び出す.
 	queue_redraw()
+
+## Line2Dの座標を更新する
+func _update_line2d() -> void:
+	for i in range(_line.points.size()-1):
+		var a = _line.points[i]
+		var b = _line.points[i+1]
+		# 0.5の重みで線形補間します
+		_line.points[i+1] = b.lerp(a, 0.5)
 
 func _check_buzz() -> bool:
 	if Common.is_buzz == false:

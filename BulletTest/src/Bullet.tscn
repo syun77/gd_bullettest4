@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkh5tp38v5m6"]
+[gd_scene load_steps=9 format=3 uid="uid://cmkh5tp38v5m6"]
 
 [ext_resource type="Script" path="res://src/Bullet.gd" id="1_cpm0a"]
 [ext_resource type="Texture2D" uid="uid://c2sk2los3qbd1" path="res://assets/images/bullet2.png" id="2_4megk"]
+[ext_resource type="Texture2D" uid="uid://bu85phpxhhjo3" path="res://assets/images/bullet_luminescence.png" id="3_vdhxn"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 11.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_giyf2"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_iijm7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kkbua"]
+colors = PackedColorArray(0, 0, 1, 0.188235, 0, 0, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0cwic"]
+blend_mode = 1
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_cpm0a")
@@ -14,5 +28,23 @@ texture = ExtResource("2_4megk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = -1
+material = SubResource("CanvasItemMaterial_giyf2")
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 32.0
+width_curve = SubResource("Curve_iijm7")
+default_color = Color(0.513726, 0.494118, 0.827451, 1)
+gradient = SubResource("Gradient_kkbua")
+
+[node name="Luminescence" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 1, 0.0627451)
+z_index = -1
+material = SubResource("CanvasItemMaterial_0cwic")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_vdhxn")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
