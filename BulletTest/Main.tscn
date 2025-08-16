@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bqbpju5y8u6p2"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="Script" uid="uid://ox0cewve1a8s" path="res://Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c4yc62525550" path="res://src/Player.tscn" id="2"]
-[ext_resource type="Shader" path="res://assets/shader/uv_scroll.gdshader" id="2_2pdhv"]
+[ext_resource type="Shader" uid="uid://cc1uhoj2u1pit" path="res://assets/shader/uv_scroll.gdshader" id="2_2pdhv"]
 [ext_resource type="Texture2D" uid="uid://c00ex15hxlaf3" path="res://assets/images/bg_back.png" id="2_dvhl6"]
 [ext_resource type="Texture2D" uid="uid://5qrlsfujxd2s" path="res://assets/images/bg_sky.png" id="3_n2fpg"]
 [ext_resource type="PackedScene" uid="uid://dgal4fl506wwy" path="res://src/enemy/Enemy.tscn" id="4"]

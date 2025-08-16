@@ -2,7 +2,8 @@ extends Area2D
 
 class_name Enemy
 
-const BULLET_OBJ = preload("res://src/Bullet.tscn")
+#const BULLET_OBJ = preload("res://src/Bullet.tscn")
+@export var BULLET_OBJ:PackedScene
 
 const HIT_TIMER = 0.5
 
@@ -230,6 +231,7 @@ func _bullet(deg:float, speed:float, delay:float=0, ax:float=0, ay:float=0):
 		return null
 	
 	# 発射する.
+	#print("BULLET_OBJ:", BULLET_OBJ)
 	var b = BULLET_OBJ.instantiate()
 	b.position = position
 	b.set_velocity(deg, speed)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://byn4trmkvd88h"]
 
 [ext_resource type="Texture2D" uid="uid://utsug1qjhk6b" path="res://assets/images/absorb.png" id="1_rsimq"]
-[ext_resource type="Script" path="res://src/particle/Absorb.gd" id="1_u6ujq"]
+[ext_resource type="Script" uid="uid://c0rcj7rgw2ja7" path="res://src/particle/Absorb.gd" id="1_u6ujq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmf73"]
 blend_mode = 1

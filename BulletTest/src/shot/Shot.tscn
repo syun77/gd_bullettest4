@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kq72c2r5dpn5"]
 
-[ext_resource type="Script" path="res://src/shot/Shot.gd" id="1_vyius"]
+[ext_resource type="Script" uid="uid://21j1ion0kp7f" path="res://src/shot/Shot.gd" id="1_vyius"]
 [ext_resource type="Texture2D" uid="uid://2lwktrj0uhde" path="res://assets/images/shot3.png" id="2_cxffh"]
 [ext_resource type="Texture2D" uid="uid://b87uvp1ecse2s" path="res://assets/images/shot.png" id="2_x21ss"]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxdu4peilotvd"]
+[gd_scene load_steps=5 format=3 uid="uid://cxdu4peilotvd"]
 
-[ext_resource type="Script" path="res://src/enemy/Tako.gd" id="1_ck1rh"]
+[ext_resource type="Script" uid="uid://ckv6qdfk88f5s" path="res://src/enemy/Tako.gd" id="1_ck1rh"]
 [ext_resource type="Texture2D" uid="uid://vhev0ho7jvxo" path="res://assets/images/enemy.png" id="1_qbp6y"]
+[ext_resource type="PackedScene" uid="uid://cmkh5tp38v5m6" path="res://src/Bullet.tscn" id="2_hvthg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fo3nr"]
 radius = 56.0
@@ -10,6 +11,7 @@ radius = 56.0
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_ck1rh")
+BULLET_OBJ = ExtResource("2_hvthg")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)

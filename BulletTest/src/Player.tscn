@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c4yc62525550"]
 
-[ext_resource type="Script" path="res://src/Player.gd" id="1_cj14x"]
+[ext_resource type="Script" uid="uid://bvv1r7xaf25gk" path="res://src/Player.gd" id="1_cj14x"]
 [ext_resource type="Texture2D" uid="uid://cqb5bm6r51a1s" path="res://assets/images/barrier2.png" id="2_itc5y"]
 [ext_resource type="Texture2D" uid="uid://duix0v2h72ihf" path="res://assets/images/fighter_a.png" id="2_y03y7"]
 [ext_resource type="PackedScene" uid="uid://b8fc6buf8mw7g" path="res://src/Option.tscn" id="4_2sq3a"]
